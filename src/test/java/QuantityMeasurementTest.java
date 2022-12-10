@@ -25,7 +25,7 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void ReferenceCheck() {
+    public void ReferenceChecks() {
         Feet feet1 = new Feet(2.0);
         Feet feet2 = feet1;
         Assert.assertSame(feet1, feet2);
