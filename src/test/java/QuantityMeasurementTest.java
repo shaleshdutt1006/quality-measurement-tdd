@@ -4,30 +4,49 @@ import org.junit.Test;
 public class QuantityMeasurementTest {
 
     @Test
-    public void given1YardAnd3FeetShouldReturnEqual() {
-        CompareLength compareLength = new CompareLength();
-        boolean result = compareLength.checkFeetIntoYard(10, 30);
+    public void given1FeetAnd12InchesShouldReturnEqual() {
+        Length length = new Length(Unit.FEET, 1);
+        boolean result = length.compare(new Length(Unit.INCH, 12));
         Assert.assertTrue(result);
-    }
 
+    }
+    @Test
+    public void given0FeetAnd0InchesShouldReturnEqual() {
+        Length length = new Length(Unit.FEET, 0);
+        boolean result = length.compare(new Length(Unit.INCH, 0));
+        Assert.assertTrue(result);
+
+    }
+    @Test
+    public void given1InchesAnd1FeetShouldReturnNotEqual() {
+        Length length = new Length(Unit.FEET, 1);
+        boolean result = length.compare(new Length(Unit.INCH, 1));
+        Assert.assertFalse(result);
+
+    }
     @Test
     public void given1FeetAnd1YardShouldReturnNotEqual() {
-        CompareLength compareLength = new CompareLength();
-        boolean result = compareLength.checkFeetIntoYard(1, 1);
+        Length length = new Length(Unit.Yard, 1);
+        boolean result = length.compare(new Length(Unit.Yard, 1));
         Assert.assertFalse(result);
     }
 
     @Test
     public void given1YardEqual36InchesShouldReturnEqual() {
-        CompareLength compareLength = new CompareLength();
-        boolean result = compareLength.checkFeetIntoInches(1, 36);
+        Length length = new Length(Unit.Yard, 1);
+        boolean result = length.compare(new Length(Unit.INCH, 36));
         Assert.assertTrue(result);
     }
-
+    @Test
+    public void given1YardAnd3FeetShouldReturnEqual() {
+        Length length = new Length(Unit.Yard, 1);
+        boolean result = length.compare(new Length(Unit.FEET, 3));
+        Assert.assertTrue(result);
+    }
     @Test
     public void given1FeetAnd1InchesShouldReturnNotEqual() {
-        CompareLength compareLength = new CompareLength();
-        boolean result = compareLength.checkFeetIntoInches(1, 1);
+        Length length = new Length(Unit.FEET, 1);
+        boolean result = length.compare(new Length(Unit.INCH, 1));
         Assert.assertFalse(result);
     }
 
